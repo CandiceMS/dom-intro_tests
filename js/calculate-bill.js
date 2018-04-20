@@ -29,8 +29,14 @@ function totalPhoneBill(){
     if (roundedBillTotal > 20.00) {
       myBillTotal.classList.add("warning");
     }
+    if (roundedBillTotal < 20.00) {
+      myBillTotal.classList.remove('warning')
+    }
     if (roundedBillTotal > 30.00) {
       myBillTotal.classList.add("danger");
+    }
+    if (roundedBillTotal < 30.00) {
+      myBillTotal.classList.remove("danger")
     }
 }
 //link the function to a click event on the calculate button
