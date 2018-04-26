@@ -18,6 +18,7 @@ var totalWithSettings = document.querySelector('.totalSettings');
 //Global variables to store values/calculations from functions
 var callsWithSettings = 0;
 var smsWithSettings = 0;
+var combinedTotal = 0;
 
 var callValue = 0;
 var smsValue = 0;
@@ -44,13 +45,18 @@ function calculate() {
         var item = checkedBtn.value
       }
 
+      if (combinedTotal >= criticalValue) {
+        return;
+      }
+
     if (item === "call") {
       callsWithSettings += callValue;
     }
     if (item === "sms") {
       smsWithSettings += smsValue;
     }
-    var combinedTotal = callsWithSettings + smsWithSettings;
+
+    combinedTotal = callsWithSettings + smsWithSettings;
 
     totalCalls.innerHTML = callsWithSettings.toFixed(2);
     totalSms.innerHTML = smsWithSettings.toFixed(2);
@@ -72,7 +78,6 @@ function calculate() {
 }
   updated.addEventListener('click', settings);
   settingsAdd.addEventListener('click', calculate);
-
 
 
 //add an event listener for when the 'Update settings' button is pressed
