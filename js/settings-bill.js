@@ -1,59 +1,76 @@
 //DOM ELEMENT REFERENCES:
 // SETTINGS INPUTS ELEMENTS
-var callSet = document.querySelector('.callCostSetting').value;
-  var updatedCall = parseFloat(callSet);
-var smsSet = document.querySelector('.smsCostSetting').value;
-  var updatedSms = parseFloat(smsSet);
-var warningSet = document.querySelector('.warningLevelSetting').value;
-  var updatedWarning = parseFloat(warningSet);
-var criticalSet = document.querySelector('.criticalLevelSetting').value;
-  var updatedCritical = parseFloat(criticalSet);
+var callSet = document.querySelector('.callCostSetting');
+var smsSet = document.querySelector('.smsCostSetting');
+var warningSet = document.querySelector('.warningLevelSetting');
+var criticalSet = document.querySelector('.criticalLevelSetting');
 
 //BUTTONS ELEMENTS TO UPDATE / CALCULATE
 var settingsAdd = document.querySelector('.settingsAddBtn');
 var updated = document.querySelector('.updateSettings');
+var billItemTypeWithSettings = document.querySelector('.billItemTypeWithSettings');
 
 //TOTALS ELEMENTS
 var totalCalls = document.querySelector('.callTotalSettings');
 var totalSms = document.querySelector('.smsTotalSettings');
 var totalWithSettings = document.querySelector('.totalSettings');
 
-//Global variables to store calculations from functions
+//Global variables to store values/calculations from functions
 var callsWithSettings = 0;
 var smsWithSettings = 0;
 
 var callValue = 0;
 var smsValue = 0;
+var warningValue = 0;
+var criticalValue = 0;
 
-updated.addEventListener('click', settings);
-
-
+//FUNCTIONS
 function settings(){
-  if (updatedCall > 0) {
-   callValue = updatedCall;
-  }
-  if (updatedSms > 0) {
-   smsValue = updatedSms;
-  }
-}
-  function calculate() {
 
-    var selectedBtn = document.querySelector("input[name='billItemTypeWithSettings']:checked");
-    if (selectedBtn){
-        var item = selectedBtn.value
+  callValue = parseFloat(callSet.value);
+  smsValue = parseFloat(smsSet.value);
+  warningValue = parseFloat(warningSet.value);
+  criticalValue = parseFloat(criticalSet.value);
+}
+
+function calculate() {
+
+      console.log(warningValue);
+      console.log(callValue);
+      console.log(smsValue);
+
+    var checkedBtn = document.querySelector("input[name='billItemTypeWithSettings']:checked");
+    if (checkedBtn){
+        var item = checkedBtn.value
       }
 
-  if (item === "call") {
-    callsWithSettings += callValue;
-  }
-  if (item === "sms") {
-    smsWithSettings += smsValue;
-  }
-  totalCalls.innerHTML = callsWithSettings.toFixed(2);
-  totalSms.innerHTML = smsWithSettings.toFixed(2);
-  var totalTotal = callsWithSettings + smsWithSettings;
-  totalWithSettings.innerHTML = totalTotal.toFixed(2);
-  }
+    if (item === "call") {
+      callsWithSettings += callValue;
+    }
+    if (item === "sms") {
+      smsWithSettings += smsValue;
+    }
+    var combinedTotal = callsWithSettings + smsWithSettings;
+
+    totalCalls.innerHTML = callsWithSettings.toFixed(2);
+    totalSms.innerHTML = smsWithSettings.toFixed(2);
+    totalWithSettings.innerHTML = combinedTotal.toFixed(2);
+
+    if (combinedTotal >= criticalValue){
+      totalWithSettings.classList.add("danger");
+    }
+    if (combinedTotal < criticalValue){
+      totalWithSettings.classList.remove("danger");
+    }
+
+    if (combinedTotal >= warningValue){
+      totalWithSettings.classList.add("warning");
+    }
+    if (combinedTotal < warningValue){
+      totalWithSettings.classList.remove("warning");
+    }
+}
+  updated.addEventListener('click', settings);
   settingsAdd.addEventListener('click', calculate);
 
 
