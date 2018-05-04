@@ -1,13 +1,15 @@
-function textBillDom(textBillTotal){
+function textBillDom(){
   var input = document.querySelector('.billTypeText');
   var addBtn = document.querySelector('.addToBillBtn');
   var callsTotal = document.querySelector('.callTotalOne');
   var smsTotal = document.querySelector('.smsTotalOne');
   var total = document.querySelector('.totalOne');
 
-      callsTotal.innerHTML = textBillTotal[calls];
-      smsTotal.innerHTML = textBillTotal[sms];
-      total.innerHTML = textBillTotal[totalCost];
+  var textBillTotal = TextBillTotal();
+
+      callsTotal.innerHTML = textBillTotal.returnCalls();
+      smsTotal.innerHTML = textBillTotal.returnSms();
+      total.innerHTML = textBillTotal.returnTotal();
 
       if (total >= 50){
 

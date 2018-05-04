@@ -1,12 +1,39 @@
 describe('Input text to calculate', function(){
 
     it('should return the calls total as R8.25 for 3 calls only', function(){
-        assert.equal(textBillTotal((callsOnly)'call','call','call'), 'R8.25');
+
+      var addCalls = TextBillTotal();
+
+        addCalls.callsOnly('call');
+        addCalls.callsOnly('call');
+        addCalls.callsOnly('call');
+
+    assert.equal(8.25, addCalls.returnCalls());
     });
+
     it('should return the sms total R3.00 for 4 sms only', function(){
-        assert.equal(textBillTotal((smsOnly)'sms','sms','sms','sms'), 'R3.00');
+
+      var addSms = TextBillTotal();
+
+        addSms.smsOnly('sms');
+        addSms.smsOnly('sms');
+        addSms.smsOnly('sms');
+        addSms.smsOnly('sms');
+
+    assert.equal(3.00, addSms.returnSms());
     });
+
     it('should return the grand total as R7.00 for 2 sms and 2 calls', function(){
-        assert.equal(textBillTotal((totalCallSms)'sms','sms','call','call'), 'R7.00');
+
+      var addTotal = TextBillTotal();
+
+        addTotal.callsOnly('call');
+        addTotal.callsOnly('call');
+        addTotal.smsOnly('sms');
+        addTotal.smsOnly('sms');
+
+        addTotal.totalCallSms();
+
+    assert.equal(7.00, addTotal.returnTotal());
     });
 });
