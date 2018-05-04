@@ -45,5 +45,5 @@ function settingsBillDom() {
         totalWithSettings.classList.remove("warning");
       }
 }
-updated.addEventListener('click', settingsBillDom;
+updated.addEventListener('click', settingsBillDom);
 settingsAdd.addEventListener('click', settingsBillDom);
