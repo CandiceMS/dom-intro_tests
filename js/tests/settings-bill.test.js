@@ -5,6 +5,7 @@ describe('Input and update values to calculate', function(){
       var addCallValue = SettingsBill();
 
         addCallValue.value_Call(2);
+        addCallValue.value_Critical(20);
 
         addCallValue.calculate_CallSms('call');
         addCallValue.calculate_CallSms('call');
@@ -18,6 +19,7 @@ describe('Input and update values to calculate', function(){
       var addSmsValue = SettingsBill();
 
         addSmsValue.value_Sms(1);
+        addSmsValue.value_Critical(20);
 
         addSmsValue.calculate_CallSms('sms');
         addSmsValue.calculate_CallSms('sms');
@@ -49,24 +51,31 @@ describe('Input and update values to calculate', function(){
 
     it('should stop calculating immediately after critical level value is reached', function(){
 
-      var criticalThreshold = SettingsBill();
+      var threshold = SettingsBill();
 
-        criticalThreshold.value_Critical(20);
-        criticalThreshold.value_Call(5);
-        criticalThreshold.value_Sms(4);
+        threshold.value_Critical(20);
+        threshold.value_Call(5);
+        threshold.value_Sms(4);
 
-        criticalThreshold.calculate_CallSms('call');
-        criticalThreshold.calculate_CallSms('call');
-        criticalThreshold.calculate_CallSms('sms');
-        criticalThreshold.calculate_CallSms('sms');
-        criticalThreshold.calculate_CallSms('call');
-        criticalThreshold.calculate_CallSms('sms');
+        threshold.calculate_CallSms('call');
+            threshold.calculate_Total();
 
-        criticalThreshold.critical();
-    //    assert.equal(true, criticalThreshold.critical());
+        threshold.calculate_CallSms('call');
+            threshold.calculate_Total();
 
-        criticalThreshold.calculate_Total();
+        threshold.calculate_CallSms('sms');
+            threshold.calculate_Total();
 
-        assert.equal(23.00, criticalThreshold.calculatedTotal());
+        threshold.calculate_CallSms('sms');
+            threshold.calculate_Total();
+
+        threshold.calculate_CallSms('call');
+            threshold.calculate_Total();
+
+        threshold.calculate_CallSms('sms');
+        threshold.calculate_CallSms('call');
+            threshold.calculate_Total();
+
+        assert.equal(23.00, threshold.calculatedTotal());
     });
 });

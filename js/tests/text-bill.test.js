@@ -4,9 +4,6 @@ describe('Input text to calculate', function(){
 
       var addCalls = TextBillTotal();
 
-  //      addCalls.callsOnly('call');
-  //      addCalls.callsOnly('call');
-  //      addCalls.callsOnly('call');
           addCalls.calculation('call');
           addCalls.calculation('call');
           addCalls.calculation('call');
@@ -18,10 +15,6 @@ describe('Input text to calculate', function(){
 
       var addSms = TextBillTotal();
 
-  //      addSms.smsOnly('sms');
-  //      addSms.smsOnly('sms');
-  //      addSms.smsOnly('sms');
-  //      addSms.smsOnly('sms');
           addSms.calculation('sms');
           addSms.calculation('sms');
           addSms.calculation('sms');
@@ -34,10 +27,6 @@ describe('Input text to calculate', function(){
 
       var addTotal = TextBillTotal();
 
-  //      addTotal.callsOnly('call');
-  //      addTotal.callsOnly('call');
-  //      addTotal.smsOnly('sms');
-  //      addTotal.smsOnly('sms');
           addTotal.calculation('call');
           addTotal.calculation('call');
           addTotal.calculation('sms');

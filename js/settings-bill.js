@@ -28,17 +28,13 @@ function SettingsBill(callInput,smsInput,warningInput,criticalInput,selectedItem
 
   function calculate_CallSms(selectedItem) {
 
-  //  if (critical()){
-  //    return;
-  //  }
-    if (combinedTotal >= criticalValue) {
+    if (critical()){
       return;
     }
-
-    if (selectedItem === "call") {
-        callsWithSettings += callValue;
-      }
-    if (selectedItem === "sms") {
+    else if (selectedItem === "call") {
+      callsWithSettings += callValue;
+    }
+    else if (selectedItem === "sms") {
       smsWithSettings += smsValue;
     }
   }

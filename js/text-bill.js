@@ -12,20 +12,11 @@ function TextBillTotal(input){
       sms += 0.75;
     }
   }
-//  function callsOnly(input) {
-//    if (input === "call"){
-//        calls += 2.75;
-//    }
-//  }
+
   function returnCalls() {
     return calls.toFixed(2);
   }
 
-//  function smsOnly(input) {
-//    if (input === "sms"){
-//        sms += 0.75;
-//    }
-//  }
   function returnSms() {
     return sms.toFixed(2);
   }
@@ -38,10 +29,8 @@ function TextBillTotal(input){
   }
 
   return {
-  //  callsOnly,
     calculation,
     returnCalls,
-  //  smsOnly,
     returnSms,
     totalCallSms,
     returnTotal
