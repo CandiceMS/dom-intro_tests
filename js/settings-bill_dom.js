@@ -1,5 +1,3 @@
-function settingsBillDom() {
-
   var callSet = document.querySelector('.callCostSetting');
   var smsSet = document.querySelector('.smsCostSetting');
   var warningSet = document.querySelector('.warningLevelSetting');
@@ -22,6 +20,7 @@ function settingsBillDom() {
 
   var settingsBill = SettingsBill();
 
+function settingsBillDom() {
 
       totalCalls.innerHTML = settingsBill.calculatedCalls();
       totalSms.innerHTML = settingsBill.calculatedSms();
@@ -45,5 +44,5 @@ function settingsBillDom() {
         totalWithSettings.classList.remove("warning");
       }
 }
-updated.addEventListener('click', settingsBillDom);
+updated.addEventListener('click', settingsBill);
 settingsAdd.addEventListener('click', settingsBillDom);

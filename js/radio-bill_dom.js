@@ -1,5 +1,3 @@
-function radioBillDom() {
-
   var addRadio = document.querySelector('.radioBillAddBtn');
   var callsTwo = document.querySelector('.callTotalTwo');
   var smsTwo = document.querySelector('.smsTotalTwo');
@@ -11,6 +9,8 @@ function radioBillDom() {
   }
 
   var radioBill = RadioBill();
+
+function radioBillDom() {
 
     callsTwo.innerHTML = radioBill.callsTotal();
     smsTwo.innerHTML = radioBill.smsTotal();

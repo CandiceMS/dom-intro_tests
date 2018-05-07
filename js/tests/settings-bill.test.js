@@ -4,9 +4,11 @@ describe('Input and update values to calculate', function(){
 
       var addCallValue = SettingsBill();
 
-        addCallValue.calculate_Calls(2,'call');
-        addCallValue.calculate_Calls(2,'call');
-        addCallValue.calculate_Calls(2,'call');
+        addCallValue.value_Call(2);
+
+        addCallValue.calculate_CallSms('call');
+        addCallValue.calculate_CallSms('call');
+        addCallValue.calculate_CallSms('call');
 
     assert.equal(6.00, addCallValue.calculatedCalls());
     });
@@ -15,10 +17,12 @@ describe('Input and update values to calculate', function(){
 
       var addSmsValue = SettingsBill();
 
-        addSmsValue.calculate_Sms(1,'sms');
-        addSmsValue.calculate_Sms(1,'sms');
-        addSmsValue.calculate_Sms(1,'sms');
-        addSmsValue.calculate_Sms(1,'sms');
+        addSmsValue.value_Sms(1);
+
+        addSmsValue.calculate_CallSms('sms');
+        addSmsValue.calculate_CallSms('sms');
+        addSmsValue.calculate_CallSms('sms');
+        addSmsValue.calculate_CallSms('sms');
 
     assert.equal(4.00, addSmsValue.calculatedSms());
     });
@@ -27,13 +31,42 @@ describe('Input and update values to calculate', function(){
 
       var addTotalValues = SettingsBill();
 
-        addTotalValues.calculate_Calls(5,'call');
-        addTotalValues.calculate_Calls(5,'call');
-        addTotalValues.calculate_Sms(4,'sms');
-        addTotalValues.calculate_Sms(4,'sms');
+        addTotalValues.value_Call(5);
+        addTotalValues.value_Sms(4);
+        addTotalValues.value_Critical(20);
+
+        addTotalValues.calculate_CallSms('call');
+        addTotalValues.calculate_CallSms('call');
+        addTotalValues.calculate_CallSms('sms');
+        addTotalValues.calculate_CallSms('sms');
 
         addTotalValues.calculate_Total();
 
-    assert.equal(18.00, addTotalValues.calculatedTotal());
+        assert.equal(10.00, addTotalValues.calculatedCalls());
+        assert.equal(8.00, addTotalValues.calculatedSms());
+        assert.equal(18.00, addTotalValues.calculatedTotal());
+    });
+
+    it('should stop calculating immediately after critical level value is reached', function(){
+
+      var criticalThreshold = SettingsBill();
+
+        criticalThreshold.value_Critical(20);
+        criticalThreshold.value_Call(5);
+        criticalThreshold.value_Sms(4);
+
+        criticalThreshold.calculate_CallSms('call');
+        criticalThreshold.calculate_CallSms('call');
+        criticalThreshold.calculate_CallSms('sms');
+        criticalThreshold.calculate_CallSms('sms');
+        criticalThreshold.calculate_CallSms('call');
+        criticalThreshold.calculate_CallSms('sms');
+
+        criticalThreshold.critical();
+        assert.equal(true, criticalThreshold.critical());
+
+        criticalThreshold.calculate_Total();
+
+        assert.equal(23.00, criticalThreshold.calculatedTotal());
     });
 });

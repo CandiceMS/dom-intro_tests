@@ -1,4 +1,3 @@
-function textBillDom(){
   var input = document.querySelector('.billTypeText');
   var addBtn = document.querySelector('.addToBillBtn');
   var callsTotal = document.querySelector('.callTotalOne');
@@ -6,6 +5,8 @@ function textBillDom(){
   var total = document.querySelector('.totalOne');
 
   var textBillTotal = TextBillTotal();
+
+  function textBillDom(){
 
       callsTotal.innerHTML = textBillTotal.returnCalls();
       smsTotal.innerHTML = textBillTotal.returnSms();

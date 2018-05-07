@@ -4,9 +4,12 @@ describe('Input text to calculate', function(){
 
       var addCalls = TextBillTotal();
 
-        addCalls.callsOnly('call');
-        addCalls.callsOnly('call');
-        addCalls.callsOnly('call');
+  //      addCalls.callsOnly('call');
+  //      addCalls.callsOnly('call');
+  //      addCalls.callsOnly('call');
+          addCalls.calculation('call');
+          addCalls.calculation('call');
+          addCalls.calculation('call');
 
     assert.equal(8.25, addCalls.returnCalls());
     });
@@ -15,10 +18,14 @@ describe('Input text to calculate', function(){
 
       var addSms = TextBillTotal();
 
-        addSms.smsOnly('sms');
-        addSms.smsOnly('sms');
-        addSms.smsOnly('sms');
-        addSms.smsOnly('sms');
+  //      addSms.smsOnly('sms');
+  //      addSms.smsOnly('sms');
+  //      addSms.smsOnly('sms');
+  //      addSms.smsOnly('sms');
+          addSms.calculation('sms');
+          addSms.calculation('sms');
+          addSms.calculation('sms');
+          addSms.calculation('sms');
 
     assert.equal(3.00, addSms.returnSms());
     });
@@ -27,10 +34,14 @@ describe('Input text to calculate', function(){
 
       var addTotal = TextBillTotal();
 
-        addTotal.callsOnly('call');
-        addTotal.callsOnly('call');
-        addTotal.smsOnly('sms');
-        addTotal.smsOnly('sms');
+  //      addTotal.callsOnly('call');
+  //      addTotal.callsOnly('call');
+  //      addTotal.smsOnly('sms');
+  //      addTotal.smsOnly('sms');
+          addTotal.calculation('call');
+          addTotal.calculation('call');
+          addTotal.calculation('sms');
+          addTotal.calculation('sms');
 
         addTotal.totalCallSms();
 

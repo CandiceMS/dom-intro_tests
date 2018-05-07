@@ -4,9 +4,9 @@ describe('Select a radio button to calculate', function(){
 
       var add_Calls = RadioBill();
 
-        add_Calls.callCalculate('call');
-        add_Calls.callCalculate('call');
-        add_Calls.callCalculate('call');
+        add_Calls.calculateCallSms('call');
+        add_Calls.calculateCallSms('call');
+        add_Calls.calculateCallSms('call');
 
     assert.equal(8.25, add_Calls.callsTotal());
     });
@@ -15,10 +15,10 @@ describe('Select a radio button to calculate', function(){
 
       var add_Sms = RadioBill();
 
-        add_Sms.smsCalculate('sms');
-        add_Sms.smsCalculate('sms');
-        add_Sms.smsCalculate('sms');
-        add_Sms.smsCalculate('sms');
+        add_Sms.calculateCallSms('sms');
+        add_Sms.calculateCallSms('sms');
+        add_Sms.calculateCallSms('sms');
+        add_Sms.calculateCallSms('sms');
 
     assert.equal(3.00, add_Sms.smsTotal());
     });
@@ -27,10 +27,10 @@ describe('Select a radio button to calculate', function(){
 
       var add_Total = RadioBill();
 
-        add_Total.callCalculate('call');
-        add_Total.callCalculate('call');
-        add_Total.smsCalculate('sms');
-        add_Total.smsCalculate('sms');
+        add_Total.calculateCallSms('call');
+        add_Total.calculateCallSms('call');
+        add_Total.calculateCallSms('sms');
+        add_Total.calculateCallSms('sms');
 
         add_Total.totalCalculate();
 

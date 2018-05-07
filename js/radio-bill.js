@@ -4,20 +4,28 @@ function RadioBill(billItemType){
   var smsOnly = 0;
   var totalRadio = 0;
 
-    function callCalculate(billItemType) {
-      if (billItemType === "call") {
-        callsOnly += 2.75;
-      }
-    }
+function calculateCallSms(billItemType) {
+  if (billItemType === "call") {
+          callsOnly += 2.75;
+       }
+  if (billItemType === "sms") {
+         smsOnly += 0.75;
+       }
+}
+//    function callCalculate(billItemType) {
+//      if (billItemType === "call") {
+//        callsOnly += 2.75;
+//      }
+//    }
     function callsTotal() {
       return callsOnly.toFixed(2);
     }
 
-    function smsCalculate(billItemType) {
-      if (billItemType === "sms") {
-        smsOnly += 0.75;
-      }
-    }
+//    function smsCalculate(billItemType) {
+//      if (billItemType === "sms") {
+//        smsOnly += 0.75;
+//      }
+//    }
     function smsTotal() {
       return smsOnly.toFixed(2);
     }
@@ -29,9 +37,10 @@ function RadioBill(billItemType){
     }
 
     return {
-      callCalculate,
+  //    callCalculate,
+      calculateCallSms,
       callsTotal,
-      smsCalculate,
+  //    smsCalculate,
       smsTotal,
       totalCalculate,
       totalReturn
