@@ -63,7 +63,7 @@ describe('Input and update values to calculate', function(){
         criticalThreshold.calculate_CallSms('sms');
 
         criticalThreshold.critical();
-        assert.equal(true, criticalThreshold.critical());
+    //    assert.equal(true, criticalThreshold.critical());
 
         criticalThreshold.calculate_Total();
 
