@@ -20,15 +20,18 @@
 
   var settingsBill = SettingsBill();
 
-function settingsBillDom() {
+  function update_Settings() {
+    callSet = settingsBill.value_Call();
+    smsSet = settingsBill.value_Sms();
+    warningSet = settingsBill.value_Warning();
+    criticalSet = settingsBill.value_Critical();
+  }
+
+  function settingsBillDom() {
 
       totalCalls.innerHTML = settingsBill.calculatedCalls();
       totalSms.innerHTML = settingsBill.calculatedSms();
       totalWithSettings.innerHTML = settingsBill.calculatedTotal();
-
-      if (totalWithSettings >= criticalSet) {
-        return;
-        }
 
       if (totalWithSettings >= criticalSet){
         totalWithSettings.classList.add("danger");
@@ -44,5 +47,5 @@ function settingsBillDom() {
         totalWithSettings.classList.remove("warning");
       }
 }
-updated.addEventListener('click', settingsBill);
+updated.addEventListener('click', update_Settings);
 settingsAdd.addEventListener('click', settingsBillDom);
